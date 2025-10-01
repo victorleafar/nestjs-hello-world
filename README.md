@@ -41,7 +41,7 @@ nestjs-hello-world
 Clone o repositório para sua máquina local:
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/victorleafar/nestjs-hello-world.git
 cd nestjs-hello-world
 ```
 
