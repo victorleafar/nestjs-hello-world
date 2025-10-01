@@ -75,36 +75,31 @@ A aplicação ficará acessível em: http://localhost:3000
 ### 5.1. Iniciar o Minikube (se usar Minikube)
 
 Se você estiver usando o Minikube, inicie-o executando o comando (substituindo o caminho se necessário):
-
+```bash
 & "C:\Program Files\Kubernetes\Minikube\minikube.exe" start
-
+```
 
 Caso queira evitar digitar o caminho completo do Minikube sempre, adicione-o ao PATH do Windows:
-
 Abra Configurações → Sistema → Sobre → Configurações avançadas do sistema → Variáveis de Ambiente.
-
 Edite a variável Path e adicione:
-
 C:\Program Files\Kubernetes\Minikube
-
-
 Reinicie o terminal.
 
 ### 5.2. Configurar Docker para o Minikube
 
 Para usar a imagem local no Minikube sem precisar fazer push para um registro externo, execute:
-
+```bash
 & "C:\Program Files\Kubernetes\Minikube\minikube.exe" docker-env | Invoke-Expression
 docker build -t nestjs-hello-world .
-
+```
 ### 5.3. Aplicar as configurações do Kubernetes
 
 Aplique as configurações do Kubernetes para implantar a aplicação:
-
+```bash
 kubectl apply -f k8s/deployment.yaml
 kubectl apply -f k8s/service.yaml
 kubectl apply -f k8s/ingress.yaml
-
+```
 
 Dica: Se ocorrer ImagePullBackOff, altere em k8s/deployment.yaml o imagePullPolicy para Never:
 
@@ -113,19 +108,20 @@ imagePullPolicy: Never
 #### 5.4. Verificar status dos pods
 
 Confira se os pods estão rodando:
-
+```bash
 kubectl get pods
-
+```
 
 Deve aparecer algo como:
-
+```bash
 NAME                                  READY   STATUS    RESTARTS   AGE
 nestjs-hello-world-76f47f6fd7-vfb26   1/1     Running   0          10s
-
+```
 ### 5.5. Acessar a aplicação
 
 Para acessar a aplicação no Minikube:
-
+```bash
 & "C:\Program Files\Kubernetes\Minikube\minikube.exe" service nestjs-hello-world --url
+```
 
 Copie o URL retornado e cole no navegador.
